@@ -33,6 +33,23 @@ df
   }
 </script>
 
+<!-- Load the Thebe activation and status field library  !-->
+<script src="{{ pathto('_static/thebe_status_field.js', 1) }}" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="{{ pathto('_static/thebe_status_field.css', 1) }}"/>
+
+<!-- Test whether some code cell contains Sage code
+     If yes, setup the ThebeLab activation and status field !-->
+<script>
+  $(function() {
+      var cellSelector = "pre:contains('sage: ')";
+      if ($(cellSelector).length > 0) {
+         $('<div class="thebe_status_field" style="position: fixed; right:0;"></div>')
+            .prependTo('div.body');
+         thebe_place_activate_button();
+      }
+  });
+</script>
+
 
 
 <!------------->
