@@ -24,6 +24,16 @@ df
 ```
 
 
+<script type="text/x-thebe-config">
+  {
+    binderOptions: {
+      repo: "crvander/version",
+      ref: "master",
+    }
+  }
+</script>
+
+
 
 <!------------->
 
