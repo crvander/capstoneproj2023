@@ -12,24 +12,33 @@ kernelspec:
 
 # Code
 
-### remove input, show output
-<!-- remove input, show output -->
-```{code-cell} ipython3
-:tags: ["remove-input"]
-python -m pip install pandas
-import pandas as pd
-
-df = pd.DataFrame({'name': ['carlos', 'diane'], 'gender': ['male', 'female']})
-df
-```
-
-
+<!-- Thebe configuration for live code cells (https://github.com/minrk/thebelab)
+  If the page contains a code cell (a `pre` tag with a sage prompt), a
+  dedicated Activate button is added in the top right corner.
+  When pressed, the code cells are made active: the user can edit and
+  run them.
+  More specifically, when pressed (thebe_activate_button_function):
+  - the thebelab JavaScript library is fetched from the web;
+  - each code block containing a sage: prompt is made active (thebe_activate_cells)
+    (editable + Run button);
+  - if the page is served by a Jupyter server which has a sagemath
+    kernel, a local jupyter kernel is requested(thebe_bootstrap_local);
+  - otherwise a kernel is requested from mybinder (https://mybinder.org).
+  -->
 <script type="text/x-thebe-config">
-  {
+  thebeConfig = {
     binderOptions: {
-      repo: "crvander/version",
-      ref: "requirements_carlos",
-    }
+      repo: "crvander/requirements_carlos",
+    },
+    stripPrompts: {
+      inPrompt: 'sage: ',
+      continuationPrompt: '....: ',
+      selector: 'pre:contains("sage: ")',
+    },
+    kernelOptions: {
+      name: "sagemath",
+    },
+    requestKernel: true
   }
 </script>
 
@@ -49,32 +58,5 @@ df
       }
   });
 </script>
-
-
-
-<!------------->
-
-
-
-
-### Thebe
-<!-- Configure and load Thebe !-->
-<script type="text/x-thebe-config">
-  {
-      requestKernel: true,
-      mountActivateWidget: true,
-      mountStatusWidget: true,
-      binderOptions: {
-      repo: "binder-examples/requirements",
-      },
-  }
-</script>
-
-<script src="https://unpkg.com/thebe@latest/lib/index.js"></script>
-
-<pre data-executable="true" data-language="python">print("Hello!")</pre>
-
-<div class="thebe-activate"></div>
-<div class="thebe-status"></div>
 
 
